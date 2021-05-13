@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+                  x:Class="AppOfficina.Portable.Views.GestionePopupNoteView" BackgroundColor="#B3000000" WidthRequest="1200" HeightRequest="1200"  >
+
+    <pages:PopupPage.Animation>
+        <animations:MoveAnimation
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            DurationIn="400"
+            DurationOut="350"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="False" />
+    </pages:PopupPage.Animation>
+    
+    <Grid RowSpacing="0" ColumnSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Column="1" Grid.Row="1" Padding="0" BackgroundColor="White" HasShadow="True" OutlineColor="#E6E6E6" Opacity="100"
+                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="1" ColumnSpacing="0" Margin="5" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Editor x:Name="txtNote" Text="{Binding note}" MaxLength="1000"   Grid.Row="0" VerticalOptions="Fill" Margin="5" Focused="txtNote_Focused"></Editor>
+                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End" HeightRequest="50">
+                    <Button Text="OK" Command="{Binding InsertNoteCommand}" IsEnabled="{Binding IsOKEnabled}" Margin="5" BackgroundColor="Blue" TextColor="White" />
+                    <Button x:Name="btnEsci" Text="CANCEL" Margin="5" BackgroundColor="Blue" Clicked="btnEsci_Clicked"  TextColor="White" />
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+
+    </Grid>
+
+</pages:PopupPage>

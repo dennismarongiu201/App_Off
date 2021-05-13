@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikChart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikGauges="clr-namespace:Telerik.XamarinForms.DataVisualization.Gauges;assembly=Telerik.XamarinForms.DataVisualization"
+             xmlns:telerikGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid"
+             xmlns:telerikBarcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
+             xmlns:telerikConversationalUI="clr-namespace:Telerik.XamarinForms.ConversationalUI;assembly=Telerik.XamarinForms.ConversationalUI"
+             xmlns:telerikImageEditor="clr-namespace:Telerik.XamarinForms.ImageEditor;assembly=Telerik.XamarinForms.ImageEditor"
+             xmlns:telerikMap="clr-namespace:Telerik.XamarinForms.Map;assembly=Telerik.XamarinForms.Map" xmlns:Forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="AppOfficina.Portable.Commessa" Visual="Material"  NavigationPage.BackButtonTitle="Indietro" NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True"
+             
+              >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Label Text="Officine" 
+                   FontFamily="NunitoBlack"
+                   TextColor="White"
+                   HorizontalOptions="Start" VerticalOptions="Center"
+                   FontSize="Medium"
+                   FontAttributes="Bold" Visual="Material"/>
+
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="{Binding LoggedUserName}" Priority="4"/>
+        <ToolbarItem Order="Primary"  Clicked="ToolbarItem_Clicked_1" IconImageSource="ic_camera_alt_white_24dp.png" Priority="1"/>
+        <!--<ToolbarItem Order="Secondary" Text="Impostazioni" Command="{Binding SettingsApp}" Priority="4"/>-->
+        <ToolbarItem Order="Secondary" Text="Logout" Command="{Binding LogOffCommand}" Priority="5"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" >
+
+            <Frame HeightRequest="60" Visual="Material">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70">
+                        </RowDefinition>
+                        <RowDefinition Height="50">
+                        </RowDefinition>
+                        <RowDefinition Height="50">
+                        </RowDefinition>
+                        <RowDefinition Height="50">
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="95">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <SearchBar Placeholder="Cerca per commessa"  Text="{Binding commessa}" x:Name="txtCommessa" 
+                           Keyboard="Numeric" VerticalOptions="CenterAndExpand"  SearchCommand="{Binding searchCommessa}" FontSize="Medium" Visual="Material" HorizontalOptions="StartAndExpand" Margin="0"/>
+
+                    <SearchBar Placeholder="Cerca per targa" Text="{Binding targa}" x:Name="txtTarga" Grid.Row="0" Grid.Column="1"
+                           Keyboard="Default" SearchCommand="{Binding searchTarga}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Visual="Material"/>
+                    <Picker x:Name="picker" Title="Stati Commessa" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Visual="Material" HeightRequest="300"  SelectedItem="{Binding filterCommesse}" HorizontalOptions="StartAndExpand" >
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Tutti</x:String>
+                                <x:String>In attesa lavorazione</x:String>
+                                <x:String>In lavorazione</x:String>
+                                <x:String>Terminata</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <!--<CheckBox x:Name="In lavorazione" Grid.Row="0" Grid.Column="2" IsChecked="{Binding filterlavorazione}"/>
+                    <CheckBox x:Name="In attesa lavorazione" Grid.Row="1" Grid.Column="2" IsChecked="{Binding filterattesalavorazione}"/>
+                    <CheckBox x:Name="Terminata" Grid.Row="2" Grid.Column="2" IsChecked="{Binding filterTerminata}"/>-->
+                    <!--<RadioButton Text="In lavorazione" Grid.Row="0" Grid.Column="2" IsChecked="{Binding filterlavorazione}"/>
+                    <RadioButton Text="In attesa lavorazione" Grid.Row="1" Grid.Column="2" IsChecked="{Binding filterattesalavorazione}"/>
+                    <RadioButton Text="Terminata" Grid.Row="2" Grid.Column="2" IsChecked="{Binding filterTerminata}"/>-->
+                    <telerikInput:RadButton x:Name="btnCerca" Text="Cerca" Command="{Binding searchingCommessa}" Grid.Row="0" Grid.Column="4" BackgroundColor="#3F51B5" TextColor="White" Visual="Material" />
+                   
+
+                </Grid>
+            </Frame>
+            <!--<telerikPrimitives:RadBusyIndicator x:Name="BusyIndicator" AnimationContentColor="#3F51B5" BackgroundColor="Transparent"
+                                       AnimationContentHeightRequest="100" VerticalOptions="Center"
+                                       AnimationContentWidthRequest="100" AnimationType="Animation8"
+                                       IsBusy="{Binding IsBusy, Mode=TwoWay}" IsVisible="{Binding IsBusy, Mode=TwoWay}">-->
+            <!--</telerikPrimitives:RadBusyIndicator>-->
+            <telerikGrid:RadDataGrid x:Name="gridCommesse" ItemsSource="{Binding listItemSource}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedItem="{Binding selectedCommessa}" 
+                                          AutoGenerateColumns="False" SelectionUnit="Row"  IsVisible="true" SelectionChanged="gridCommesse_SelectionChanged"
+                                     UserFilterMode="Disabled" UserGroupMode="Disabled" UserEditMode="None"  IsEnabled="True"
+                                     LoadOnDemandMode="Manual" LoadOnDemandBufferItemsCount="90"  IsBusy="{Binding IsBusy, Mode=TwoWay}" >
+                <telerikGrid:RadDataGrid.SelectionStyle>
+                    <telerikGrid:DataGridBorderStyle BackgroundColor="LightCyan" BorderColor="Blue" BorderThickness="0"  />
+                </telerikGrid:RadDataGrid.SelectionStyle>
+                <telerikGrid:RadDataGrid.Columns>
+
+                    <telerikGrid:DataGridTemplateColumn HeaderText="Stato" >
+                        <telerikGrid:DataGridTemplateColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTemplateColumn.HeaderStyle>
+                        <telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                            <DataTemplate>
+                                <StackLayout HeightRequest="30">
+                                    <BoxView BackgroundColor="{Binding ColorStates}" HeightRequest="30" WidthRequest="10" ></BoxView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                    </telerikGrid:DataGridTemplateColumn>
+
+                    <telerikGrid:DataGridTextColumn  PropertyName="NumeroCommessa" HeaderText="Numero Commessa">
+                        <telerikGrid:DataGridTextColumn.CellContentStyle>
+                            <telerikGrid:DataGridTextCellStyle  FontSize="15" />
+                        </telerikGrid:DataGridTextColumn.CellContentStyle>
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="ragioneSociale" HeaderText="Ragione Sociale">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="TargaCommessa" HeaderText="Targa">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="NomeCommessa" HeaderText="Nome" IsVisible="False">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+
+
+                    <telerikGrid:DataGridTextColumn  PropertyName="codice" HeaderText="codice" IsVisible="False">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+
+                    <telerikGrid:DataGridTextColumn  PropertyName="DescrizioneVeicolo" HeaderText="Descrizione">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="Colore" HeaderText="Colore" IsVisible="False">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="Telaio" HeaderText="Telaio">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+
+                    <telerikGrid:DataGridTextColumn  PropertyName="telefono" HeaderText="Telefono">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="email" HeaderText="Email">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+                    <telerikGrid:DataGridTextColumn  PropertyName="codiceFiscale" HeaderText="codiceFiscale" IsVisible="False">
+                        <telerikGrid:DataGridTextColumn.HeaderStyle>
+                            <telerikGrid:DataGridColumnHeaderStyle OptionsButtonTextColor="Transparent"
+                                                    OptionsButtonFontSize="0"
+                                                    BorderColor="#D9D9D9"
+                                                    BorderThickness="1"/>
+                        </telerikGrid:DataGridTextColumn.HeaderStyle>
+                    </telerikGrid:DataGridTextColumn>
+
+                </telerikGrid:RadDataGrid.Columns>
+                
+            </telerikGrid:RadDataGrid>
+            
+          
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

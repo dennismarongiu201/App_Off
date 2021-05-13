@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:AppOfficina.Portable"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikChart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikGauges="clr-namespace:Telerik.XamarinForms.DataVisualization.Gauges;assembly=Telerik.XamarinForms.DataVisualization"
+             xmlns:telerikGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid"
+             xmlns:telerikBarcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
+             xmlns:telerikConversationalUI="clr-namespace:Telerik.XamarinForms.ConversationalUI;assembly=Telerik.XamarinForms.ConversationalUI"
+             xmlns:telerikImageEditor="clr-namespace:Telerik.XamarinForms.ImageEditor;assembly=Telerik.XamarinForms.ImageEditor"
+             xmlns:telerikMap="clr-namespace:Telerik.XamarinForms.Map;assembly=Telerik.XamarinForms.Map"
+             xmlns:telerikPdfViewer="clr-namespace:Telerik.XamarinForms.PdfViewer;assembly=Telerik.XamarinForms.PdfViewer"
+             x:Class="AppOfficina.Portable.MainPage" Visual="Material" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
+
+
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="CenterAndExpand" Padding="20" Margin="20,0,0,0" x:Name="ScrollView" >
+            <StackLayout Orientation="Vertical" Padding="20" x:Name="MainStack">
+                <Image HorizontalOptions="Center" WidthRequest="200" Source="{Binding AppLogoPath}" IsVisible="{Binding AppLogoAvailable}" />
+                <ActivityIndicator x:Name="LoginBusyIndicator" Color="#3F51B5" IsRunning="{Binding IsBusy}" 
+                                       WidthRequest="80" HeightRequest="80"/>
+
+                <Entry x:Name="txtEmail" Text="{Binding UserName}" Placeholder="Username" ClearButtonVisibility="WhileEditing" Visual="Material" PlaceholderColor="#6EA3FF" HeightRequest="70" Keyboard="Text" Unfocused="txtEmail_Unfocused" Focused="txtEmail_Focused" IsSpellCheckEnabled="False"   />
+                <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" ClearButtonVisibility="WhileEditing" Visual="Material" PlaceholderColor="#6EA3FF" HeightRequest="70" Keyboard="Text" IsPassword="True" IsSpellCheckEnabled="False" />
+
+                <telerikInput:RadButton x:Name="btnLogin" Command="{Binding LoginCommand}" Text="Accedi" TextColor="White" BackgroundColor="#3F51B5"  FontSize="Medium" HorizontalOptions="FillAndExpand" CornerRadius="20" HeightRequest="50" Margin="25"  />
+
+                <Label x:Name="txtVersion" Text="Versione 1.2.7" FontSize="Medium" TextColor="black"></Label>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

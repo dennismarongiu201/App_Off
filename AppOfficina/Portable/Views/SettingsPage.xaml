@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppOfficina.Portable.Views.SettingsPage" NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True" NavigationPage.IconColor="white">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Padding="10">
+
+            <Label Text="Officine" 
+                   FontFamily="NunitoBlack"
+                   TextColor="White"
+                   HorizontalOptions="Start" VerticalOptions="Center"
+                   FontSize="Medium"
+                   FontAttributes="Bold"/>
+
+            <!--<Label Text="{Binding AppVersion}" 
+                   FontFamily="NunitoBlack"
+                   TextColor="White"
+                   HorizontalOptions="Start" VerticalOptions="Center"
+                   FontSize="Small"
+                   FontAttributes="Bold"/>-->
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Salva" Command="{Binding SaveSettings}" Priority="0"/>
+        <ToolbarItem Order="Primary" Text="{Binding LoggedUserName}" Priority="1"/>
+        <ToolbarItem Order="Secondary" Text="Logout" Command="{Binding LogOffCommand}" Priority="5"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <TableView Intent="Settings" >
+            <TableRoot>
+                <TableSection Title="Impostazioni API">
+                    <ViewCell Height="100">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Server" HorizontalOptions="StartAndExpand"></Label>
+                            <Entry x:Name="txtApiServer" Text="{Binding ServerApi}" WidthRequest="450" HeightRequest="75" HorizontalOptions="EndAndExpand"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Api Name" HorizontalOptions="StartAndExpand"></Label>
+                            <Entry x:Name="txtApiName" Text="{Binding ApiName}" WidthRequest="450" HorizontalOptions="EndAndExpand"></Entry>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:customControls="clr-namespace:AppOfficina.Portable.CustomControls"
+             mc:Ignorable="d"
+             x:Name="InconvenientePage"
+             x:Class="AppOfficina.Portable.Views.ViewInconveniente" NavigationPage.HasBackButton="False" Visual="Material" >
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Spacing="80" Padding="5" VerticalOptions="Start">
+            <!-- <telerikInput:RadButton ImageSource="ic_arrow_back_white_18dp" Command="{Binding BackToCommessa}" BackgroundColor="#3F51B5" VerticalOptions="Start"></telerikInput:RadButton>-->
+            <ImageButton Command="{Binding BackToCommessa}" Source="ic_arrow_back_white_18dp" BackgroundColor="#3F51B5" VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsBackToCommessaEnabled}" HeightRequest="80"></ImageButton>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="240"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="135"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="COMMESSA : " Grid.Row="0" Grid.Column="0" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding IDCommessa}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="TARGA : " FontSize="Caption" Grid.Row="0" Grid.Column="3"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding targaVeicolo}" Grid.Row="0" Grid.Column="4"   FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="VEICOLO : " FontSize="Caption" Grid.Row="1" Grid.Column="0"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding nomeVeicolo}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"   FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="TELAIO : " FontSize="Caption" Grid.Row="3" Grid.Column="0"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding numeroTelaio}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"  FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="CODICE CLIENTE: " Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding codiceCliente}" Grid.Row="0" Grid.Column="9" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="RAGIONE SOCIALE: " Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding ragioneSociale}" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="TELEFONO : " Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding telefono}" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="EMAIL : " Grid.Row="3" Grid.Column="7" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding mail}" Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+
+            </Grid>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Gestione Extra" IsEnabled="{Binding IsExtraEnabled}" Command="{Binding ExtraCommand}" Priority="1"/>
+        <ToolbarItem Order="Secondary" Text="{Binding LoggedUserName}" Priority="4"/>
+        <ToolbarItem Order="Secondary" Text="Logout" Command="{Binding LogOffCommand}" Priority="5"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid IsClippedToBounds="True" Visual="Material" RowSpacing="4" ColumnSpacing="3" Margin="7" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"  />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.ColumnSpan="7" Grid.RowSpan="13">
+                <ListView x:Name="listView" SeparatorVisibility="None" IsRefreshing="{Binding IsBusy}" IsVisible="true" IsEnabled="True" 
+                      SelectedItem="{Binding selectedInconveniente,Mode=TwoWay}" CachingStrategy="RecycleElement" ItemsSource="{Binding lstInconvenienti, Mode=TwoWay}" 
+                          IsPullToRefreshEnabled="True" RefreshCommand="{Binding refreshListView}"
+                          VerticalOptions="FillAndExpand" HasUnevenRows="False" Visual="Material" ItemSelected="listView_ItemSelected" ItemTapped="listView_ItemTapped" SelectionMode="Single">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS, Android" Value="230" />
+                            <On Platform="UWP" Value="90" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<customControls:ExtendedViewCell SelectedBackgroundColor="Teal"  IsEnabled="{Binding isEnable}">-->
+                                <!-- IsEnabled="{Binding isEnable}"-->
+                                <!--Tapped="ViewCell_Tapped"-->
+                                <ViewCell x:Name="vwCellInconveniente" Tapped="ViewCell_Tapped" IsEnabled="{Binding isEnable}">
+                                <ContentView Padding="6">
+                                    <Frame IsClippedToBounds="True" HasShadow="True" Padding="0" BackgroundColor="White" >
+                                        <StackLayout Orientation="Vertical">
+                                            <Grid x:Name="grdInconveniente">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="51">
+                                                    </RowDefinition>
+                                                    <RowDefinition Height="25">
+                                                    </RowDefinition>
+                                                    <RowDefinition Height="40">
+                                                    </RowDefinition>
+                                                    <RowDefinition Height="30">
+                                                    </RowDefinition>
+                                                    <RowDefinition Height="40">
+                                                    </RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="70">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="50">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="15">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="45">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="17">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="55">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="32">
+                                                    </ColumnDefinition>
+                                                    <ColumnDefinition Width="*">
+                                                    </ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Frame BackgroundColor="{Binding ColorState}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="6"></Frame>
+                                                <CheckBox x:Name="chkSelection" Grid.Row="0" Grid.Column="11" Visual="Material" IsChecked="{Binding selection}" IsEnabled="False" VerticalOptions="EndAndExpand"></CheckBox>
+                                                <Label Text="{Binding NomeInconveniente}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="9" FontSize="Medium"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                                                <Label Text="Stato :" FontSize="Medium" FontAttributes="Bold" Grid.Row="1" Grid.Column="1"  VerticalOptions="Start" />
+                                                <Label Text="{Binding Stato}" FontSize="Medium" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" VerticalOptions="Start" />
+                                                <Label Text="Inizio alle" FontSize="Medium" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2"  VerticalOptions="StartAndExpand" FontAttributes="Bold" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding DataInizio}" FontSize="Medium" FontAttributes="Bold" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2" VerticalOptions="Start"  />
+                                                <Label Text="fine alle" FontSize="Medium" Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"  VerticalOptions="StartAndExpand" FontAttributes="Bold" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding DataFine}" FontSize="Medium" FontAttributes="Bold" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" VerticalOptions="Start" />
+
+                                                <telerikPrimitives:RadBusyIndicator x:Name="BusyIndicator" AnimationType="Animation3" AnimationContentColor="#2374FF" AnimationContentHeightRequest="30" AnimationContentWidthRequest="30" Grid.Row="1" Grid.Column="7"  IsBusy="{Binding IsLoadTimer}"></telerikPrimitives:RadBusyIndicator>
+                                                <Editor x:Name="txtNote" Text="{Binding Note}"  Visual="Material" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" Grid.ColumnSpan="5" FontSize="Medium" PlaceholderColor="#6EA3FF" MaxLength="100"  Placeholder="Note" 
+                                                        AutoSize="TextChanges" IsEnabled="{Binding IsEnableNote}"  Unfocused="txtNote_Unfocused" IsVisible="false"/>
+                                                <telerikInput:RadButton x:Name="btnGestioneNote" Text="Aggiungi Note"  FontSize="Medium"
+                                                                        CommandParameter="{Binding .}"
+                                                                        Command="{Binding Path=BindingContext.GestioneNoteCommand , Source={x:Reference InconvenientePage}}" 
+                                                                        IsEnabled="{Binding IsEnableNote}" BackgroundColor="#3F51B5" TextColor="White" Grid.Row="3" Grid.RowSpan="2"  Grid.Column="8" IsVisible="true" Grid.ColumnSpan="2"></telerikInput:RadButton>
+                                                <Label Text="Tempo totale :" FontSize="Medium" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" />
+                                                <Label x:Name="txtHour" Text="Ore" FontSize="Medium" FontAttributes="Bold"  HorizontalTextAlignment="Start" Grid.Column="4" Grid.Row="2" >
+                                                </Label>
+                                                <Label x:Name="txtLabelHour" Text="{Binding OreLavorate}" FontSize="Medium"  HorizontalTextAlignment="Start"  Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" HorizontalOptions="StartAndExpand">
+                                                </Label>
+                                                <Label x:Name="txtLabelTimer" Text="{Binding MinutiLavorati}" FontSize="Medium"   HorizontalTextAlignment="Start" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2" HorizontalOptions="StartAndExpand"  >
+                                                </Label>
+                                                <Label x:Name="txtLabelminutes" Text="Minuti" FontSize="Medium" FontAttributes="Bold"  HorizontalTextAlignment="Start" Grid.Column="6" Grid.Row="2" >
+                                                </Label>
+
+                                                <Label x:Name="labelll2" Text="Num. foto " FontSize="20" TextColor="Black" FontAttributes="Bold"  HorizontalTextAlignment="Start" 
+                                                       VerticalOptions="End"  Opacity="0.5" 
+                                                       Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"></Label>
+                                                <Label x:Name="nameCountPhoto" Text="{Binding NumeroFoto}" FontSize="20" TextColor="Black"  
+                                                       HorizontalTextAlignment="Start" VerticalOptions="Start"
+                                                        Opacity="0.5" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"></Label>
+                                                <Label x:Name="labelll3" Text="Num. allegati " FontSize="20" TextColor="Black"   HorizontalTextAlignment="Start" 
+                                                       VerticalOptions="Start"  FontAttributes="Bold" Opacity="0.5" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"></Label>
+                                                <Label x:Name="nameCountDocument" Text="{Binding NumeroDocumenti}" FontSize="20" 
+                                                       TextColor="Black" HorizontalTextAlignment="Start" VerticalOptions="Start" 
+                                                        Opacity="0.5" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3"></Label>
+
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+
+            <telerikInput:RadButton x:Name="btnStart" TextColor="White" BackgroundColor="DarkGreen"  FontSize="Large"  Text="Start" Grid.Row="0" Grid.RowSpan="3" Grid.Column="7" Grid.ColumnSpan="2" IsEnabled="{Binding IsStartEnabled}" Command="{Binding StartCommand}"  />
+            <telerikInput:RadButton x:Name="btnStop" TextColor="White" BackgroundColor="DarkRed"  FontSize="Large" Text="Stop"  Grid.Row="0" Grid.RowSpan="3" Grid.Column="9" Grid.ColumnSpan="2" IsEnabled="{Binding IsStopEnabled}" Command="{Binding StopCommand}"  />
+            <telerikInput:RadButton x:Name="btnCloseInconveniente" TextColor="White" BackgroundColor="#3F51B5"  FontSize="Medium"   Text="Chiudi Inconveniente" Grid.Row="3" Grid.RowSpan="2"  Grid.Column="9" Grid.ColumnSpan="2" IsEnabled="{Binding IsCloseInconvenienteEnabled}" Command="{Binding CloseInconvenienteCommand}" />
+            <!--<telerikInput:RadButton x:Name="btnApri" Text="Apri inconveniente" BackgroundColor="LightGreen" Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="2"  TextColor="White"   FontSize="Medium" Command="{Binding OpenInconvenienteCommand}" IsEnabled="{Binding IsOpenInconvenienteEnabled}" />-->
+            <telerikInput:RadButton x:Name="btnWorking" Text="Fine lavoro" Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="2" TextColor="White" BackgroundColor="Green"  FontSize="Large" Command="{Binding EndWorkCommand}" IsEnabled="{Binding IsFineLavoroEnabled}" />
+
+
+            <telerikPrimitives:RadBorder Grid.Row="7" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="5" >
+                
+                <StackLayout Orientation="Vertical"  Margin="0,0,0,20" >
+                    <StackLayout Orientation="Horizontal" Margin="0,0,0,20" >
+                        <Label Text="Gestione Foto" FontSize="Large" FontAttributes="Bold" TextColor="Black" Margin="0"/>
+                    </StackLayout>
+
+                    <telerikInput:RadButton x:Name="btnScattaFoto" Text="Scatta foto"
+                                                    BackgroundColor="#3F51B5" 
+                                                    BorderColor="#3F51B5"
+                                                    
+                                                    BorderWidth="2"
+                                                    Margin="4"
+                                                    WidthRequest="185"
+                                                    HeightRequest="70"
+                                                    Padding="12,3,12,3"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="White"
+                                                        IsEnabled="{Binding IsTakePhotoEnabled}" Clicked="btnScattaFoto_Clicked"  />
+                    <telerikInput:RadButton x:Name="btnUploadPhoto" Text="Carica foto"
+                                                    BackgroundColor="#3F51B5" 
+                                                    BorderColor="#3F51B5"
+                                                   
+                                                    BorderWidth="2"
+                                                    Margin="4,4,4,4"
+                                                    WidthRequest="185"
+                                                    HeightRequest="70"
+                                                    Padding="12,3,12,3"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start"
+                                                    TextColor="White"
+                                                        IsEnabled="{Binding IsPhotoEnabled}" Clicked="btnUploadPhoto_Clicked"  />
+                </StackLayout>
+            </telerikPrimitives:RadBorder>
+            
+
+     <!--<telerikDataControls:RadListView x:Name="lstPhoto"  SelectionChanged="listView_SelectionChanged"  SelectionMode="Single" SelectionGesture="Tap" FlowDirection="MatchParent"  IsEnabled="True"
+                                             Grid.Row="8" Grid.Column="7" Grid.ColumnSpan="4" Grid.RowSpan="3" >
+
+                <telerikDataControls:RadListView.SelectedItemStyle >
+                    <telerikListView:ListViewItemStyle
+                                                           BorderWidth="3"
+                                                           BorderLocation="Bottom"
+                                                           BorderColor="#FF8E56"/>
+                </telerikDataControls:RadListView.SelectedItemStyle>
+                <telerikDataControls:RadListView.Triggers>
+                    <DataTrigger TargetType="{x:Type telerikDataControls:RadListView}"
+                                 Binding="{Binding SelectedLayout.Type}"
+                                 Value="Grid">
+                        <Setter Property="LayoutDefinition">
+                            <Setter.Value>
+                                <telerikListView:ListViewGridLayout GroupHeaderLength="34" HorizontalItemSpacing="1" VerticalItemSpacing="2" SpanCount="1" ItemLength="130" Orientation="Horizontal"  />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </telerikDataControls:RadListView.Triggers>
+                <telerikDataControls:RadListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <telerikListView:ListViewTemplateCell>
+                            <telerikListView:ListViewTemplateCell.View>
+                                <Grid Grid.ColumnSpacing="0"
+                                      Grid.RowSpacing="3">
+
+                                    
+                                    <Grid Grid.ColumnSpacing="0"
+                                          Grid.RowSpacing="0"
+                                          HeightRequest="20"
+                                          HorizontalOptions="FillAndExpand"
+                                          VerticalOptions="End"
+                                          BackgroundColor="White"
+                                          Opacity="0.5"/>
+                                    <Grid Grid.ColumnSpacing="0"
+                                          Grid.RowSpacing="0"
+                                          Padding="10,8,0,8">
+
+                                        <StackLayout HorizontalOptions="Start" VerticalOptions="End">
+                                            <Label x:Name="Label" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalOptions="End" BackgroundColor="Silver" Opacity="0.5" Text="{Binding nameImage}"/>
+                                        </StackLayout>
+                                        
+                                    </Grid>
+                                 
+                                </Grid>
+                                
+                            </telerikListView:ListViewTemplateCell.View>
+                        </telerikListView:ListViewTemplateCell>
+
+
+
+
+                    </DataTemplate>
+                </telerikDataControls:RadListView.ItemTemplate>
+            </telerikDataControls:RadListView>-->
+
+
+            <telerikInput:RadButton x:Name="btnAttesa" Text="In attesa ricambi" Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2" Grid.RowSpan="2" TextColor="White" BackgroundColor="#FFC800" FontSize="Medium" IsEnabled="{Binding IsAttesaEnabled}" Command="{Binding AttesaRicambiCommand}" Margin="0" />
+            <!--<telerikInput:RadButton x:Name="btnGestioneFoto" Text="Foto" Grid.Row="2" Grid.Column="9" TextColor="White" BackgroundColor="#3F51B5" FontSize="Caption" IsEnabled="{Binding IsPhotoEnabled}" Command="{Binding PhotoCommand}" />-->
+            <!--<telerikInput:RadButton x:Name="btnExtra" Text="Gest. Extra" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="1" TextColor="White" BackgroundColor="#3F51B5" FontSize="Caption"  IsEnabled="{Binding IsExtraEnabled}" Command="{Binding ExtraCommand}" />-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

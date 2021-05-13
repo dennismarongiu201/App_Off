@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="AppOfficina.Portable.Views.ContentPopupConfirm">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <ControlTemplate x:Key="PopupTemplate">
+                <telerikPrimitives:RadBorder CornerRadius="8" BackgroundColor="White" WidthRequest="280">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Foto caricate correttamente!"
+                               LineBreakMode="WordWrap"
+                               FontSize="16"
+                               HorizontalTextAlignment="Center"
+                               Grid.Row="1"/>
+
+                  
+
+                        <telerikInput:RadButton BackgroundColor="#189FCC"
+                                                Margin="8"
+                                                TextColor="White"
+                                                Text="Chiudi"
+                                                Grid.Row="3"
+                                                BorderRadius="22"
+                                                Clicked="RadButton_Clicked"
+                                                WidthRequest="200"
+                                                HeightRequest="44"
+                                                HorizontalOptions="Center"
+                                                AutomationId="BackToContactsBtn"/>
+                    </Grid>
+                </telerikPrimitives:RadBorder>
+            </ControlTemplate>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+  
+</ContentView>

@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls" 
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls" 
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="AppOfficina.Portable.Views.HistoryNotesPage"
+             NavigationPage.BackButtonTitle="Indietro" NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True" NavigationPage.IconColor="White">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"  
+                                        Value="WhiteSmoke" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Spacing="30" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="240"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="135"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="COMMESSA : " Grid.Row="0" Grid.Column="0" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding IDCommessa}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="TARGA : " FontSize="Caption" Grid.Row="0" Grid.Column="3"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding targaVeicolo}" Grid.Row="0" Grid.Column="4"   FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="VEICOLO : " FontSize="Caption" Grid.Row="1" Grid.Column="0"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding nomeVeicolo}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"   FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="TELAIO : " FontSize="Caption" Grid.Row="3" Grid.Column="0"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding numeroTelaio}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"  FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="CODICE CLIENTE: " Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding codiceCliente}" Grid.Row="0" Grid.Column="9" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="RAGIONE SOCIALE: " Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding ragioneSociale}" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="TELEFONO : " Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding telefono}" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="EMAIL : " Grid.Row="3" Grid.Column="7" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding mail}" Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+
+            </Grid>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="{Binding LoggedUserName}" Priority="4"/>
+        <ToolbarItem Order="Primary" Command="{Binding AddNoteCommand}" IsEnabled="{Binding IsAddNoteEnable}"  Text="Aggiungi note" Priority="1"/>
+        
+        <ToolbarItem Order="Secondary" Text="Logout" Command="{Binding LogOffCommand}" Priority="5"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <telerikPrimitives:RadBusyIndicator x:Name="BusyIndicator"                             
+                            VerticalOptions="Center"
+                            AnimationContentHeightRequest="70"
+                            AnimationContentWidthRequest="70"
+                            HeightRequest="110" AnimationType="Animation6"
+                            AnimationContentColor="Blue"
+                            IsBusy="{Binding IsBusy}"  >
+            <telerikPrimitives:RadBusyIndicator.BusyContent>
+                <Label Text="Caricamento note in corso.." IsVisible="true" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" />
+            </telerikPrimitives:RadBusyIndicator.BusyContent>
+            <telerikPrimitives:RadBusyIndicator.BusyContentTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ContentPresenter Content="{TemplateBinding Path=AnimationContent}" />
+                        <ContentPresenter Grid.Row="1"
+                                  Content="{TemplateBinding Path=BusyContent}"
+                                  HorizontalOptions="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </telerikPrimitives:RadBusyIndicator.BusyContentTemplate>
+        </telerikPrimitives:RadBusyIndicator>
+
+        <telerikDataControls:RadListView x:Name="lstNote" ItemsSource="{Binding lstNote}"
+                                         SelectionMode="Single"
+                                         SelectionGesture="Tap" 
+                                         FlowDirection="LeftToRight" IsEnabled="True" ItemTapped="lstNote_ItemTapped" >
+            <telerikDataControls:RadListView.HeaderTemplate>
+                <DataTemplate>
+                    <telerikPrimitives:RadBorder>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#EAEAEA">
+                            <telerikPrimitives:RadBorder 
+                                                        HorizontalOptions="Start"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        Margin="10">
+                            </telerikPrimitives:RadBorder>
+                            <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                                <Label Text="Elenco Note" FontAttributes="Bold" TextColor="Black" Margin="0"/>
+                                
+                            </StackLayout>
+                            <!--<telerikInput:RadButton Text="Salva"
+                                                    BackgroundColor="Transparent" 
+                                                    BorderColor="#007AFF"
+                                                    BorderRadius="10"
+                                                    BorderWidth="2"
+                                                    Margin="4"
+                                                    WidthRequest="130"
+                                                    HeightRequest="40"
+                                                    Padding="12,3,12,3"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="End"
+                                                    TextColor="#007AFF"
+                                                        IsEnabled="{Binding IsEnableSendPhoto}" Command="{Binding SaveAndSend}" />-->
+                            <!--<ActivityIndicator x:Name="NoteBusyIndicator" Color="#3F51B5" IsRunning="{Binding IsBusy}" 
+                                       WidthRequest="35" HeightRequest="35"/>-->
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+                </DataTemplate>
+            </telerikDataControls:RadListView.HeaderTemplate>
+
+            <telerikDataControls:RadListView.SelectedItemStyle >
+                <telerikListView:ListViewItemStyle
+                                                           BorderWidth="3"
+                                                           BorderLocation="All"
+                                                           BorderColor="#FF8E56"/>
+            </telerikDataControls:RadListView.SelectedItemStyle>
+            <telerikDataControls:RadListView.Triggers>
+                <!--<DataTrigger   Value="Grid">
+                    <Setter Property="LayoutDefinition">
+                        <Setter.Value>
+                            <telerikListView:ListViewGridLayout GroupHeaderLength="34" HorizontalItemSpacing="2" VerticalItemSpacing="2" SpanCount="2" ItemLength="200" Orientation="Vertical" />
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>-->
+            </telerikDataControls:RadListView.Triggers>
+            <telerikDataControls:RadListView.ItemTemplate>
+                <DataTemplate>
+                    <telerikListView:ListViewTemplateCell>
+                        <telerikListView:ListViewTemplateCell.View>
+                            <Grid Grid.ColumnSpacing="0"
+                                      Grid.RowSpacing="0">
+                               
+                                
+                                    <Frame IsClippedToBounds="True" HasShadow="True" Margin="2"  Padding="4"  >
+                                    <StackLayout Orientation="Vertical">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                                <RowDefinition Height="auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="80"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Editor Text="{Binding Testo}" IsEnabled="False" Grid.Row="0" Grid.RowSpan="7" Grid.Column="0" 
+                                                    Grid.ColumnSpan="7" FontSize="Medium" FontAttributes="Bold"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" ></Editor>
+                                            <Label Text="Scritta da : "  FontSize="Small"  Grid.Row="0" Grid.Column="7" HorizontalOptions="Start" ></Label>
+                                            <Label Text="{Binding Utente}" FontSize="Medium" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="2" FontAttributes="Bold" HorizontalOptions="Start" HorizontalTextAlignment="Start" ></Label>
+                                            <Label Text="Data : "  FontSize="Small" Grid.Row="1" Grid.Column="7" ></Label>
+                                            <Label Text="{Binding DataScrittura}"  FontSize="Medium" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" FontAttributes="Bold" HorizontalOptions="Start"></Label>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                              
+                            </Grid>
+
+                            
+                        </telerikListView:ListViewTemplateCell.View>
+                    </telerikListView:ListViewTemplateCell>
+                </DataTemplate>
+            </telerikDataControls:RadListView.ItemTemplate>
+        </telerikDataControls:RadListView>
+        
+    </Grid>
+</ContentPage>

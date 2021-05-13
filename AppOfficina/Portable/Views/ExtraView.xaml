@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls" xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             mc:Ignorable="d"
+             x:Class="AppOfficina.Portable.Views.ExtraView" NavigationPage.HasBackButton="True" NavigationPage.IconColor="White">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" Spacing="30" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="45"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="52"></ColumnDefinition>
+                    <ColumnDefinition Width="240"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="135"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="COMMESSA : " Grid.Row="0" Grid.Column="0" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding idCommessa}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="TARGA : " FontSize="Caption" Grid.Row="0" Grid.Column="3"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding targa}" Grid.Row="0" Grid.Column="4"   FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="VEICOLO : " FontSize="Caption" Grid.Row="1" Grid.Column="0"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding nomeVeicolo}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"   FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="TELAIO : " FontSize="Caption" Grid.Row="3" Grid.Column="0"  FontAttributes="Bold" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="{Binding numeroTelaio}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"  FontSize="Caption"  FontAttributes="None" TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+                <Label Text="CODICE CLIENTE: " Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding codiceCliente}" Grid.Row="0" Grid.Column="9" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="RAGIONE SOCIALE: " Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding ragioneSociale}" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="TELEFONO : " Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding telefono}" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+                <Label Text="EMAIL : " Grid.Row="3" Grid.Column="7" FontSize="Caption"  FontAttributes="Bold" TextColor="White"  VerticalOptions="Start"   HorizontalOptions="Start" />
+                <Label Text="{Binding mail}" Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="3" FontSize="Caption"  FontAttributes="None" TextColor="White"  VerticalOptions="Start"  HorizontalOptions="Start"  />
+
+            </Grid>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="{Binding LoggedUserName}" Priority="4"/>
+        <ToolbarItem Order="Primary"  Command="{Binding save}" IsEnabled="{Binding IsSaveEnabled}" Text="Salva" Priority="1"/>
+        <ToolbarItem Order="Secondary" Text="Logout" Command="{Binding LogOffCommand}" Priority="5"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+
+      
+        <!--<ScrollView x:Name="ScrollView"  Padding="15" Margin="10,0,0,0">-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="120"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ActivityIndicator x:Name="SaveInconvenienteExtra" Color="#5227bd" Grid.Row="0"  IsRunning="{Binding IsBusy}" 
+                                       WidthRequest="35" HeightRequest="35" Visual="Material" VerticalOptions="Center"/>
+            <!--<StackLayout Orientation="Vertical"  x:Name="MainStack" VerticalOptions="FillAndExpand"  >-->
+            
+            <!--<Label Text="Gestione inconveniente extra" FontSize="Small" Grid.Row="0"  TextColor="DarkGray" Margin="10,20,0,10"></Label>-->
+
+            <Entry x:Name="txtTitle" Text="{Binding titoloInconveniente}" Grid.Row="1"  Placeholder="Titolo"  PlaceholderColor="#6EA3FF" Focused="txtTitle_Focused" Unfocused="txtTitle_Unfocused"
+                                           Keyboard="Text"  TextColor="#161111" HeightRequest="70" Visual="Material"  />
+
+
+            <Editor x:Name="txtDescriptionInconveniente"  Text="{Binding descrInconveniente}" Grid.Row="2"  IsSpellCheckEnabled="False" Placeholder="Descrizione" PlaceholderColor="#6EA3FF" Margin="0,0,0,10" VerticalOptions="FillAndExpand" Keyboard="Default" MaxLength="255" 
+                         Visual="Material" BackgroundColor="#EAEAEA" ></Editor>
+
+
+            <telerikPrimitives:RadBorder Grid.Row="3">
+                <StackLayout Orientation="Horizontal" BackgroundColor="#EAEAEA">
+                    <telerikPrimitives:RadBorder 
+                                                        HorizontalOptions="Start"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        Margin="10">
+                    </telerikPrimitives:RadBorder>
+                    <StackLayout Orientation="Horizontal" Spacing="6" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                        <Label Text="Galleria Foto" FontAttributes="Bold" FontSize="Medium" TextColor="Black" Margin="0"/>
+                    </StackLayout>
+                    <telerikInput:RadButton Text="Foto"
+                                                     
+                                                    BorderColor="#007AFF"
+                                                    BorderRadius="10"
+                                                    BorderWidth="2"
+                                                    Margin="4"
+                                                    WidthRequest="130"
+                                                    HeightRequest="40"
+                                                    Padding="12,3,12,3"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center"
+                                                    BackgroundColor="#007AFF"
+                                                    TextColor="White"
+                                                        IsEnabled="true" Command="{Binding PhotoCommand}" />
+                </StackLayout>
+            </telerikPrimitives:RadBorder>
+
+            <telerikDataControls:RadListView x:Name="lstPhotoInExtra" Grid.Row="4" Grid.RowSpan="3" ItemsSource="{Binding imagesExtra}" SelectionMode="Single" SelectionChanged="lstPhotoInExtra_SelectionChanged" SelectionGesture="Tap" FlowDirection="MatchParent"  IsEnabled="True">
+                <telerikDataControls:RadListView.SelectedItemStyle >
+                        <telerikListView:ListViewItemStyle
+                                                           BorderWidth="3"
+                                                           BorderLocation="Bottom"
+                                                           BorderColor="#FF8E56"/>
+                    </telerikDataControls:RadListView.SelectedItemStyle>
+                    <telerikDataControls:RadListView.Triggers>
+                        <DataTrigger TargetType="{x:Type telerikDataControls:RadListView}"
+                                 Binding="{Binding SelectedLayout.Type}"
+                                 Value="Grid">
+                            <Setter Property="LayoutDefinition">
+                                <Setter.Value>
+                                    <telerikListView:ListViewGridLayout GroupHeaderLength="38" HorizontalItemSpacing="4" VerticalItemSpacing="4" SpanCount="1" ItemLength="220" Orientation="Horizontal"  />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </telerikDataControls:RadListView.Triggers>
+                    <telerikDataControls:RadListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <telerikListView:ListViewTemplateCell>
+                                <telerikListView:ListViewTemplateCell.View>
+                                    <Grid Grid.ColumnSpacing="0"
+                                      Grid.RowSpacing="0"
+                                      Grid.Row="1" 
+                                          >
+
+                                        <ffimageloading:CachedImage Aspect="AspectFill" DownsampleHeight="200" DownsampleUseDipUnits="True" DownsampleToViewSize="True"  Source="{Binding Source}" ></ffimageloading:CachedImage>
+                                        <Grid Grid.ColumnSpacing="0"
+                                          Grid.RowSpacing="0"
+                                          HeightRequest="35"
+                                          HorizontalOptions="FillAndExpand"
+                                          VerticalOptions="End"
+                                          BackgroundColor="White"
+                                          Opacity="0.5"/>
+                                        <Grid Grid.ColumnSpacing="0" Grid.RowSpacing="0" Padding="10,8,0,8">
+                                            <StackLayout HorizontalOptions="Start"  VerticalOptions="End">
+                                                <Label x:Name="Label" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalOptions="End" BackgroundColor="Silver" Opacity="0.5" Text="{Binding nameImage}"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </telerikListView:ListViewTemplateCell.View>
+                            </telerikListView:ListViewTemplateCell>
+                        </DataTemplate>
+                    </telerikDataControls:RadListView.ItemTemplate>
+                </telerikDataControls:RadListView>
+            
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
